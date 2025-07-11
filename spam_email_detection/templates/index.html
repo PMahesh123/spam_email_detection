@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>📧 Spam Email Detection</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 50px;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        textarea {
+            width: 60%;
+            height: 100px;
+            font-size: 16px;
+        }
+        input {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .spam {
+            color: red;
+        }
+        .ham {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>📧 Spam Email Detection</h1>
+    <form method="POST">
+        <textarea name="email" placeholder="Type your email here...">{{ email }}</textarea><br><br>
+        <input type="submit" value="Detect">
+    </form>
+
+    {% if prediction %}
+        <div class="result {% if prediction.startswith('Spam') %}spam{% else %}ham{% endif %}">
+            Result: {{ prediction }}
+        </div>
+    {% endif %}
+</body>
+</html>
